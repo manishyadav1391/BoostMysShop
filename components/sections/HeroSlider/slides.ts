@@ -128,7 +128,7 @@ export const slides: Slide[] = [
         },
         subtitle:
             "Send just one photo of your shop. Creating, running, and tracking ad results - <strong>we'll handle everything</strong>",
-        image: "/images/mobile-ad-preview.jpg",
+        image: "/images/mobile-ad-preview.png",
         imageAlt: "Mobile showing Instagram ad",
         comparison: [
             { label: "You will do:", value: "Just send one photo" },
