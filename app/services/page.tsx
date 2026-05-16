@@ -8,22 +8,27 @@ import ServicesCTA from "@/components/services/ServicesCTA";
 
 export default function ServicesPage() {
     return (
-        <main className="pt-24 pb-24 px-5 space-y-16 bg-gray-50 min-h-screen">
+        <main className="bg-gray-50 min-h-screen overflow-x-hidden">
 
+            {/* Full-width hero */}
             <ServicesHero />
 
-            <PricingCards />
+            {/* Padded content area */}
+            <div className="px-5 py-16 space-y-24 max-w-7xl mx-auto">
 
-            <GuaranteeBox />
+                <PricingCards />
 
-            <IncludedFeatures />
+                <GuaranteeBox />
 
-            <ProcessTimeline />
+                <IncludedFeatures />
 
-            <AddOns />
+                <ProcessTimeline />
 
-            <ServicesCTA />
+                <AddOns />
 
+                <ServicesCTA />
+
+            </div>
         </main>
     );
 }

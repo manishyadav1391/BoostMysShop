@@ -8,22 +8,27 @@ import ResultsCTA from "@/components/results/ResultsCTA";
 
 export default function ResultsPage() {
     return (
-        <main className="pt-24 pb-24 px-5 space-y-16 bg-gray-50 min-h-screen">
+        <main className="bg-gray-50 min-h-screen overflow-x-hidden">
 
+            {/* Full-width hero */}
             <ResultsHero />
 
-            <FilterChips />
+            {/* Padded content area */}
+            <div className="px-5 py-16 space-y-20 max-w-7xl mx-auto">
 
-            <FeaturedCaseStudy />
+                <FilterChips />
 
-            <VideoTestimonial />
+                <FeaturedCaseStudy />
 
-            <QuickWinsGrid />
+                <VideoTestimonial />
 
-            <IndustryBenchmarks />
+                <QuickWinsGrid />
 
-            <ResultsCTA />
+                <IndustryBenchmarks />
 
+                <ResultsCTA />
+
+            </div>
         </main>
     );
 }

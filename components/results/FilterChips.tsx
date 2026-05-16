@@ -1,35 +1,41 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const filters = [
-    "All",
-    "Kirana",
-    "Boutique",
-    "Electronics",
-    "Restaurant",
+    { label: "All", emoji: "✨" },
+    { label: "Kirana", emoji: "🛒" },
+    { label: "Boutique", emoji: "👗" },
+    { label: "Electronics", emoji: "📱" },
+    { label: "Restaurant", emoji: "🍽️" },
 ];
 
 export default function FilterChips() {
     const [active, setActive] = useState("All");
 
     return (
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-3 py-4"
+        >
             {filters.map((filter) => (
-                <button
-                    key={filter}
-                    onClick={() => setActive(filter)}
-                    className={`px-5 py-2 rounded-full whitespace-nowrap transition
-          
-          ${active === filter
-                            ? "bg-blue-900 text-white"
-                            : "bg-gray-100 text-gray-700"
-                        }
-          `}
+                <motion.button
+                    key={filter.label}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActive(filter.label)}
+                    className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 border
+                        ${active === filter.label
+                            ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-200"
+                            : "bg-white text-gray-600 border-gray-200 hover:border-indigo-300 hover:text-indigo-600"
+                        }`}
                 >
-                    {filter}
-                </button>
+                    <span>{filter.emoji}</span>
+                    {filter.label}
+                </motion.button>
             ))}
-        </div>
+        </motion.div>
     );
 }

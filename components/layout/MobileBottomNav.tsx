@@ -44,6 +44,9 @@ const navItems = [
 export default function MobileBottomNav() {
     const pathname = usePathname();
 
+    // Hide on all admin routes
+    if (pathname?.startsWith("/admin")) return null;
+
     return (
         <nav className="fixed bottom-0 left-0 w-full z-50 bg-white border-t shadow-lg md:hidden">
 

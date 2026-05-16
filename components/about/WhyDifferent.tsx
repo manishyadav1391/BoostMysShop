@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import {
     MapPin,
     Languages,
@@ -37,21 +40,26 @@ const items = [
 
 export default function WhyDifferent() {
     return (
-        <section className="py-20 px-5 bg-gray-50">
+        <section className="py-24 px-5 bg-gray-50">
 
             <div className="max-w-6xl mx-auto">
 
-                <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
+                >
 
-                    <h2 className="text-4xl font-black mb-4">
-                        Why We’re Different
+                    <h2 className="text-4xl md:text-5xl font-black mb-4">
+                        Why We're Different
                     </h2>
 
                     <p className="text-gray-600 text-lg">
                         Built for local businesses, not corporate brands.
                     </p>
 
-                </div>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
@@ -59,14 +67,22 @@ export default function WhyDifferent() {
                         const Icon = item.icon;
 
                         return (
-                            <div
+                            <motion.div
                                 key={i}
-                                className="bg-white p-8 rounded-3xl shadow-sm border hover:shadow-xl transition"
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-30px" }}
+                                transition={{ delay: i * 0.12, duration: 0.5 }}
+                                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                                className="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-shadow"
                             >
 
-                                <div className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-6">
+                                <motion.div
+                                    whileHover={{ rotate: 10, scale: 1.1 }}
+                                    className="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-6"
+                                >
                                     <Icon size={24} />
-                                </div>
+                                </motion.div>
 
                                 <h3 className="text-xl font-bold mb-3">
                                     {item.title}
@@ -76,7 +92,7 @@ export default function WhyDifferent() {
                                     {item.desc}
                                 </p>
 
-                            </div>
+                            </motion.div>
                         );
                     })}
 

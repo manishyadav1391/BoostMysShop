@@ -10,4 +10,21 @@ export const plans = [
             "Weekly report",
         ],
     },
+    {
+        name: "Growth",
+        price: 12000,
+        label: "Best for Boutiques & Salons",
+        adSpend: 10000,
+        featured: true,
+
+        features: [
+            "20 Reels + 10 Stories",
+            "2km targeting",
+            "Facebook + Instagram",
+            "Daily monitoring",
+        ],
+
+        cta: "Get Growth Now",
+    },
+
 ];

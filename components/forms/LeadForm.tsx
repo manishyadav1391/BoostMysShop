@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { createLead } from "@/hooks/useLead";
 import { openWhatsApp } from "@/lib/whatsapp";
+import { motion } from "framer-motion";
 
 export default function LeadForm() {
     const pathname = usePathname(); // ✅ safe
@@ -35,42 +36,58 @@ export default function LeadForm() {
     };
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow max-w-md mx-auto">
-            <h3 className="text-xl font-bold mb-4">
-                Get Customers for Your Shop
-            </h3>
+        <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 rounded-2xl shadow-2xl max-w-md mx-auto border border-gray-100"
+        >
+            <div className="mb-6 text-center">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    Start Growing Today
+                </h2>
+                <p className="text-gray-500 text-sm">
+                    Enter your details to get customers for your shop.
+                </p>
+            </div>
 
-            <input
-                placeholder="Your Name"
-                className="w-full border p-3 mb-3 rounded"
-                onChange={(e) =>
-                    setForm({ ...form, name: e.target.value })
-                }
-            />
+            <div className="space-y-4">
+                <input
+                    placeholder="Your Name"
+                    className="w-full border border-gray-200 bg-gray-50 p-4 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                    onChange={(e) =>
+                        setForm({ ...form, name: e.target.value })
+                    }
+                />
 
-            <input
-                placeholder="Phone Number"
-                className="w-full border p-3 mb-3 rounded"
-                onChange={(e) =>
-                    setForm({ ...form, phone: e.target.value })
-                }
-            />
+                <input
+                    placeholder="Phone Number"
+                    type="tel"
+                    className="w-full border border-gray-200 bg-gray-50 p-4 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                    onChange={(e) =>
+                        setForm({ ...form, phone: e.target.value })
+                    }
+                />
 
-            <input
-                placeholder="Shop Name"
-                className="w-full border p-3 mb-4 rounded"
-                onChange={(e) =>
-                    setForm({ ...form, shop: e.target.value })
-                }
-            />
+                <input
+                    placeholder="Shop Name"
+                    className="w-full border border-gray-200 bg-gray-50 p-4 rounded-xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
+                    onChange={(e) =>
+                        setForm({ ...form, shop: e.target.value })
+                    }
+                />
 
-            <button
-                onClick={handleSubmit}
-                disabled={loading}
-                className="w-full bg-green-500 text-white py-3 rounded"
-            >
-                {loading ? "Sending..." : "Get Started"}
-            </button>
-        </div>
+                <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleSubmit}
+                    disabled={loading}
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-4 rounded-xl shadow-lg transition-colors mt-2"
+                >
+                    {loading ? "Sending..." : "Get Started"}
+                </motion.button>
+            </div>
+        </motion.div>
     );
 }
